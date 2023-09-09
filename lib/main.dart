@@ -6,6 +6,8 @@ import 'package:project_get/app/controllers/auth_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'app/utils/loading.dart';
 import 'firebase_options.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 
 void main() async {

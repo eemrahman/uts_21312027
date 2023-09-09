@@ -12,6 +12,9 @@ class SignupView extends GetView<SignupController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Image.asset(
+            'assets/teknokrat.png'),
+            backgroundColor: Colors.red,
         title: const Text('Signup View'),
         centerTitle: true,
       ),

@@ -44,8 +44,11 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Data Product'),
+          leading: Image.asset(
+            'assets/teknokrat.png'),
+          title: const Text('Data Mahasiswa'),
           centerTitle: true,
+          backgroundColor: Colors.red,
           actions: [
             IconButton(
               onPressed: () => cAuth.logout(),
@@ -76,7 +79,7 @@ class HomeView extends GetView<HomeController> {
     // );
 
     // 2. Menampilkan data secara realtime
-      body: StreamBuilder<QuerySnapshot<Object?>>(
+      body: StreamBuilder<QuerySnapshot<Object?>>( 
         stream: controller.streamData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
@@ -90,9 +93,9 @@ class HomeView extends GetView<HomeController> {
                   backgroundColor: Colors.white,
                 ),
                 title: Text(
-                    "${(listAllDocs[index].data() as Map<String, dynamic>)["name"]}"),
+                    "${(listAllDocs[index].data() as Map<String, dynamic>)["nama"]}"),
                 subtitle: Text(
-                    "${(listAllDocs[index].data() as Map<String, dynamic>)["price"]}"),
+                    "${(listAllDocs[index].data() as Map<String, dynamic>)["npm"]}"),
                 trailing: IconButton(
                   onPressed: () => showOption(listAllDocs[index].id),
                   icon: Icon(Icons.more_vert),
@@ -106,7 +109,7 @@ class HomeView extends GetView<HomeController> {
         },
       ),
       floatingActionButton: FloatingActionButton(onPressed: () => Get.toNamed(Routes.ADD_PRODUCT),
-      child: Icon(Icons.add),),
+      child: Icon(Icons.add), backgroundColor: Colors.red,),
     );
   }
 }

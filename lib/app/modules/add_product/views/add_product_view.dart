@@ -10,38 +10,74 @@ class AddProductView extends GetView<AddProductController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Prodcut'),
+        title: const Text('Tambah Data Mahasiswa'),
         centerTitle: true,
+        leading: Image.asset(
+            'assets/teknokrat.png'),
+            backgroundColor: Colors.red,
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
         child: Column(
           children: [
             TextField(
-              controller: controller.cNama,
+              controller: controller.cNPM,
               autocorrect: false,
               textInputAction: TextInputAction.next,
-              decoration: InputDecoration(labelText: "Nama Product"),
+              decoration: InputDecoration(labelText: "NPM"),
             ),
             SizedBox(
               height: 10,
             ),
             TextField(
-              controller: controller.cHarga,
+              controller: controller.cNama,
               autocorrect: false,
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Harga Product"),
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: "Nama"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextField(
+              controller: controller.cAlamat,
+              autocorrect: false,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: "Alamat"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextField(
+              controller: controller.cProgramStudi,
+              autocorrect: false,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: "Program Studi"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextField(
+              controller: controller.cJK,
+              autocorrect: false,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: "Jenis Kelamin"),
             ),
             SizedBox(
               height: 30,
             ),
             ElevatedButton(
               onPressed: ()=> controller.addProduct(
+                controller.cNPM.text,
                 controller.cNama.text,
-                controller.cHarga.text,
+                controller.cAlamat.text,
+                controller.cProgramStudi.text,
+                controller.cJK.text,
               ), 
-              child: Text("Simpan")
+              child: Text("Simpan"),
+               style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+              ),
               ),
           ],
         ),

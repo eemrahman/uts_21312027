@@ -14,6 +14,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Image.asset(
+            'assets/teknokrat.png'),
+            backgroundColor: Colors.red,
         title: const Text('Reset Password'),
         centerTitle: true,
       ),

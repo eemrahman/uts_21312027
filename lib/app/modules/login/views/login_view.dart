@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_get/app/routes/app_pages.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 import '../../../controllers/auth_controller.dart';
 import '../controllers/login_controller.dart';
@@ -13,13 +15,21 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Login View'),
+          title: Text('Universitas Teknokrat Indonesia'),
           centerTitle: true,
+          backgroundColor: Colors.red,
         ),
         body: Container(
           padding: EdgeInsets.all(10),
           child: ListView(
             children: [
+              SizedBox(
+                height: 50
+              ),
+              Image.asset('assets/teknokrat.png', width: 200, height: 200,),
+               SizedBox(
+                height: 10,
+              ),
               TextField(
                 controller: controller.cEmail,
                 decoration: InputDecoration(
@@ -60,7 +70,18 @@ class LoginView extends GetView<LoginController> {
                     child: Text("Daftar Disini")
                     )
                 ],
-                )
+                ),
+                SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () => cAuth.LoginGoogle(),
+                child: Text("Login with Google"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                ),
+              ),
             ],
           ),
         ));

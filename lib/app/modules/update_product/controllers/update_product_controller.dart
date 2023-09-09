@@ -5,30 +5,39 @@ import 'package:get/get.dart';
 
 class UpdateProductController extends GetxController {
   late TextEditingController cNama;
-  late TextEditingController cHarga;
+  late TextEditingController cNPM;
+  late TextEditingController cAlamat;
+  late TextEditingController cProgramStudi;
+  late TextEditingController cJK;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<DocumentSnapshot<Object?>> getData(String id) async{
-    DocumentReference docRef = firestore.collection("products").doc(id);
+    DocumentReference docRef = firestore.collection("mahasiswa").doc(id);
 
     return docRef.get();
   }
 
-  void updateProduct(String nama, String harga, String id) async {
-    DocumentReference productById = firestore.collection("products").doc(id);
+  void updateProduct(String npm, String nama, String alamat, String program_studi, String jk, String id) async {
+    DocumentReference productById = firestore.collection("mahasiswa").doc(id);
     try {
       await productById.update({
-        "name" : nama,
-        "price" : harga,
+        "nama" : nama,
+        "npm" : npm,
+        "alamat" : alamat,
+        "program_studi" : program_studi,
+        "jk" : jk,
       });
 
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Berhasil mengubah data product.",
+        middleText: "Berhasil mengubah data Mahasiswa.",
         onConfirm: () {
+          cNPM.clear();
           cNama.clear();
-          cHarga.clear();
+          cAlamat.clear();
+          cProgramStudi.clear();
+          cJK.clear();
           Get.back();
           Get.back();
         },
@@ -39,22 +48,28 @@ class UpdateProductController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi kesalahan",
-        middleText: "Gagal Menambahkan Product.",
+        middleText: "Gagal Mengubah Product.",
       );
     }
   }
 
   @override
   void onInit(){
-  cNama = TextEditingController();
-  cHarga=TextEditingController();
+  cNPM = TextEditingController();
+  cNama=TextEditingController();
+  cAlamat=TextEditingController();
+  cProgramStudi=TextEditingController();
+  cJK=TextEditingController();
   super.onInit();
   }
 
   void onClose() {
 
+    cNPM.dispose();
     cNama.dispose();
-    cHarga.dispose();
+    cAlamat.dispose();
+    cProgramStudi.dispose();
+    cJK.dispose();
     super.onClose();
   }
 }
